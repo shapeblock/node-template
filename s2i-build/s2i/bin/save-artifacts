@@ -1,0 +1,5 @@
+#!/bin/bash
+
+if [ -d "/app/node_modules" ] && [ "$(ls "/app/node_modules" 2>/dev/null)" ]; then
+    tar -C /app -cf - node_modules
+fi
