@@ -1,9 +1,5 @@
 apiVersion: template.openshift.io/v1
 kind: Template
-labels:
-  template: node
-  from: shapeblock
-  app: ${NAME}
 message: |-
   The following service(s) have been created in your project: ${NAME}, ${NAME}-db.
 metadata:
@@ -17,6 +13,9 @@ metadata:
     tags: quickstart,nodejs,shapeblock
     template.openshift.io/bindable: "false"
   name: node
+  labels:
+    template: node
+    from: shapeblock
 objects:
 - apiVersion: v1
   kind: Secret
@@ -96,17 +95,19 @@ objects:
       description: Defines how to deploy the application server
       template.alpha.openshift.io/wait-for-ready: "true"
     name: ${NAME}
+    labels:
+      type: app
+      stack: node
   spec:
     replicas: 1
     selector:
-      name: ${NAME}
+      app: ${NAME}
     strategy:
       type: Recreate
     template:
       metadata:
         labels:
-          name: ${NAME}
-        name: ${NAME}
+          app: ${NAME}
       spec:
         containers:
         - env:
