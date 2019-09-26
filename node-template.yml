@@ -4,7 +4,9 @@ message: |-
   The following service(s) have been created in your project: ${NAME}, ${NAME}-db.
 metadata:
   annotations:
-    description: Debian based Node.js application with a MongoDB database.
+    description: Node.js + MongoDB, Node 12
+    repo: https://github.com/badri/reactnotesapp.git
+    icon: nodejs
     iconClass: icon-nodejs
     openshift.io/display-name: Node.js + MongoDB
     openshift.io/long-description: This template defines resources needed to develop
@@ -296,7 +298,7 @@ parameters:
   displayName: Git Repository URL
   name: SOURCE_REPOSITORY_URL
   required: true
-  value: https://github.com/sclorg/nodejs-ex.git
+  value: https://github.com/badri/reactnotesapp.git
 - description: Set this to a branch name, tag or other ref of your repository if you
     are not using the default branch.
   displayName: Git Reference
